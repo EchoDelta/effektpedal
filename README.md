@@ -12,3 +12,4 @@ En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha i
 - https://forum.juce.com/t/audio-thru-xlr-cable-into-raspberry-pi/35452
 - http://www.audioinjector.net/rpi-ultra
 - https://www.amazon.com/dp/B01N905VOY
+- https://github.com/Streampunk/naudiodon#readme
