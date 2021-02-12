@@ -1,0 +1,23 @@
+{
+  "name": "effektpedal",
+  "version": "1.0.0",
+  "description": "En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha input for gitar og output for hodetelefon. Prosesserer signaler i real time.",
+  "main": "pifect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EchoDelta/effektpedal.git"
+  },
+  "author": "@torgeir,@EchoDelta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EchoDelta/effektpedal/issues"
+  },
+  "homepage": "https://github.com/EchoDelta/effektpedal#readme",
+  "dependencies": {
+    "naudiodon": "^2.3.4",
+    "through2": "^4.0.2"
+  }
+}
