@@ -15,3 +15,4 @@ En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha i
 - https://www.amazon.com/dp/B01N905VOY
 - https://github.com/Streampunk/naudiodon#readme
 - http://www.portaudio.com/
+- https://wiki.linuxaudio.org/wiki/raspberrypi
