@@ -16,4 +16,8 @@ WORKDIR /q/example
 COPY --from=build /q/build/example .
 CMD /q/example/example_sin_synth
 
+# run it
 # DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd q:latest
+
+# debug in a shell
+# DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd -it --entrypoint /bin/bash q:latest
