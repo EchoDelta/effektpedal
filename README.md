@@ -8,6 +8,11 @@ En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha i
 - [ ] Få til å spille ut lyden i real time
 - [ ] Legge inn mulighet for å prosessere lyd med diverse moduler / plug-ins
 
+## Effektidéer
+- [ ] Delay
+- [ ] Looper
+- [ ] Multitap delay
+
 ## Ressurser / lenker
 - https://forum.juce.com/t/audio-thru-xlr-cable-into-raspberry-pi/35452
 - https://github.com/iPlug2/iPlug2OOS - alternativ til juce
