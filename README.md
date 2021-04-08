@@ -14,6 +14,7 @@ En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha i
 - [ ] Multitap delay
 - [ ] Reverb
 - [ ] Fuzz!
+- [ ] Flanger
 
 ## Oppsett av raspberry pi'en
 
