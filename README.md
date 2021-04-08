@@ -12,7 +12,7 @@ En (bærbar) effektboks for gitar som skal kjøre på en Raspberry Pi. Skal ha i
 - [ ] Delay
 - [ ] Looper
 - [ ] Multitap delay
-- [ ] Reverb
+- [ ] Reverb (feks [C++ Reverb – DSP Final Project](https://nebkelectronics.wordpress.com/2019/05/07/c-reverb-dsp-final-project/))
 - [ ] Fuzz!
 - [ ] Flanger
 
