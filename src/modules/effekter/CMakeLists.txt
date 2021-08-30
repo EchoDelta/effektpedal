@@ -4,6 +4,7 @@ project(effekter)
 
 set(E_HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/include/effekter/delay.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/include/effekter/reverb.hpp
 )
 
 file(GLOB_RECURSE E_HEADERS include/*.hpp)
