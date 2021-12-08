@@ -4,8 +4,10 @@ project(EffektPedal_Test)
 
 add_executable(EffektPedal_Test_Delay delay.cpp)
 add_executable(EffektPedal_Test_Reverb reverb.cpp)
+add_executable(EffektPedal effektpedal.cpp)
 target_link_libraries(EffektPedal_Test_Delay effekter libq libqio cycfi::infra)
 target_link_libraries(EffektPedal_Test_Reverb effekter libq libqio cycfi::infra)
+target_link_libraries(EffektPedal effekter libq libqio cycfi::infra)
 
 file(
   COPY resources

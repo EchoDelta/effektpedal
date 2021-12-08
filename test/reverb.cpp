@@ -15,25 +15,31 @@ namespace effektpedal
         effektpedal::Reverb _reverb;
         effektpedal::Reverb _reverb2;
         effektpedal::Reverb _reverb3;
-        effektpedal::Delay _delay;
         float _y = 0.0f;
         float _yy = 0.0f;
 
         reverb_processor(q::wav_memory &wav)
-          : port_audio_stream(q::audio_device::get(0), 2, 44100), _wav(wav),
-              _reverb(44100, .1f), _reverb2(44100, .3f), _reverb3(44100, .4f),
-              _delay(44100, 700_ms, .3f) {}
+            : port_audio_stream(q::audio_device::get(1), 1, 2),
+              _wav(wav),
+              _reverb(44100, .1f),
+              _reverb2(44100, .3f),
+              _reverb3(44100, .4f)
+        {
 
-        void process(out_channels const &out) {
+        }
+
+        void process(in_channels const &in,
+                     out_channels const &out)
+        {
           auto left = out[0];
           auto right = out[1];
+          auto ch0 = in[0];
           for (auto frame : out.frames()) {
-            auto s = _wav()[0];
-            _y = _delay(s) + _reverb2(s);
-            _yy = _delay(s) + _reverb3(s);
+            auto s = ch0[frame];
+            _y = _reverb2(s);
             left[frame] = _y;
-            right[frame] = _yy;
-          }
+            right[frame] = _y;
+           }
         }
     };
 }

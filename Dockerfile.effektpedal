@@ -1,6 +1,9 @@
+# DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.effektpedal -t compiled .
 FROM torgeir/effektpedal:latest
 COPY . /effektpedal
-RUN mkdir /effektpedal/build \
-    && cd /effektpedal/build \
-    && cmake -G"CodeBlocks - Unix Makefiles" ../ \
-    && make
+WORKDIR effektpedal
+RUN cmake -G"CodeBlocks - Unix Makefiles" . && make
+WORKDIR /effektpedal/test
+#ENTRYPOINT ./EffektPedal_Test_Delay
+#ENTRYPOINT ./EffektPedal_Test_Reverb
+ENTRYPOINT ./EffektPedal
