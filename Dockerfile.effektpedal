@@ -1,0 +1,6 @@
+FROM torgeir/effektpedal:latest
+COPY . /effektpedal
+RUN mkdir /effektpedal/build \
+    && cd /effektpedal/build \
+    && cmake -G"CodeBlocks - Unix Makefiles" ../ \
+    && make
