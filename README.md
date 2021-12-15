@@ -34,16 +34,95 @@ https://gist.github.com/torgeir/688369351d91152a3c63a4e51135f661
 - http://www.portaudio.com/
 - https://wiki.linuxaudio.org/wiki/raspberrypi
 
+# Build the base image
+
+```
+DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.base -t <dockerhub-username>/effektpedal:latest
+```
+
+Remember to update the Dockerfile.effektpedal to depend on this image ☝️
+
+Push it to dockerhub
+
+```
+DOCKER_HOST=ssh://pi4 docker push torgeir/effektpedal:latest
+```
+
 # Run on Raspberry PI
+
+Build the local code on the pi:
+
+```
+DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.effektpedal -t compiled
+```
 
 To run it:
 
 ```
-DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd q:latest
+DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd compiled
+```
+
+Build and run on the pi:
+
+```
+DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.effektpedal -t compiled . \
+&& DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd compiled
 ```
 
 To debug in a shell:
 
 ```
-DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd -it --entrypoint /bin/bash q:latest
+DOCKER_HOST=ssh://pi4 docker run --device=/dev/snd:/dev/snd -it --entrypoint /bin/bash compiled
+```
+
+# Make it persistently run on PI boot
+
+```
+DOCKER_HOST=ssh://pi4 docker run -d --restart=always --name effektpedal --device=/dev/snd:/dev/snd compiled
+```
+
+# To make redeploy possible, run this first
+
+```
+DOCKER_HOST=ssh://pi4 docker rm effektpedal
+```
+
+# All in one go
+
+```
+DOCKER_HOST=ssh://pi4 docker stop effektpedal; \
+  DOCKER_HOST=ssh://pi4 docker rm effektpedal; \
+  DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.effektpedal -t compiled . \
+  && DOCKER_HOST=ssh://pi4 docker run -d --name effektpedal --restart=always --device=/dev/snd:/dev/snd compiled
+```
+
+# Troubleshooting
+
+## Kill the running container:
+
+```
+DOCKER_HOST=ssh://pi4 docker stop $(docker ps | tail -n 1 | awk '{print $1}')
+```
+
+
+## Debug docker image size
+
+```
+ncdu -X .dockerignore
+```
+
+## Prune all images
+
+```
+docker images prune -f
+```
+
+
+## Its rediculously loud!?
+
+
+```sh
+amixer sset 'Master' 50%
+amixer sset 'Capture' 50%
+sudo alsactl store
 ```

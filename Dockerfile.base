@@ -1,0 +1,13 @@
+# DOCKER_HOST=ssh://pi4 docker build -f Dockerfile.base -t torgeir/effektpedal:latest .
+FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive TZ="Europe/Oslo"
+RUN apt update \
+    && apt install -y \
+    libasound-dev g++ cmake \
+    alsa-base alsa-tools alsa-utils
+RUN usermod -G audio root
+RUN echo pcm.!default plughw:Device >> ~/.asoundrc && echo ctl.!default plughw:Device >> ~/.asoundrc
+
+# publish by:
+# docker tag XX <docker-hub-username>/effektpedal
+# docker push <docker-hub-username>/effektpedal
